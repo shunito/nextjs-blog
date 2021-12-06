@@ -30,6 +30,11 @@ export default function Home({ allPostsData }) {
           (This is a sample website - you’ll be building a site like this on{' '}
           <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
         </p>
+        <p>
+          <Link href="/posts/first-post">
+          <a>最初のページ</a>
+          </Link>
+        </p>
         <Alert type="success">Alert Success</Alert>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
