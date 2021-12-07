@@ -3,10 +3,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { useRouter } from 'next/router';
+
 const name = 'Shunsuke Ito'
-export const siteTitle = 'Next.js Sample Website'
+export const siteTitle = 'Sample Site'
 
 export default function Layout({ children, home }) {
+  const router = useRouter();
+
+  
+
   return (
     <div className="p-6 m-6 max-w-screen-lg mx-auto bg-white rounded-xl shadow-md items-center space-x-2">
       <Head>
@@ -67,6 +73,19 @@ export default function Layout({ children, home }) {
           </Link>
         </div>
       )}
+
+      <footer>
+        <ul>
+          {router.locales.map((locale) => (
+            <li key={locale}>
+              <Link href={router.asPath} locale={locale}>
+                <a>{locale}</a>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </footer>
+
     </div>
   )
 }

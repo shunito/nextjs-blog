@@ -1,10 +1,13 @@
 import Head from 'next/head'
 import Date from '../../components/date'
 import Layout from '../../components/layout'
+
+import { useRouter } from 'next/router';
+
 import { getAllPostIds, getPostData } from '../../lib/posts'
 
-export async function getStaticProps({ params }) {
-  const postData = await getPostData(params.id)
+export async function getStaticProps({ params, locale }) {
+  const postData = await getPostData(params.id, locale)
   return {
     props: {
       postData
@@ -12,8 +15,8 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export async function getStaticPaths() {
-    const paths = getAllPostIds()
+export async function getStaticPaths({ locales }) {
+    const paths = getAllPostIds(locales)
     return {
       paths,
       fallback: false
@@ -21,6 +24,8 @@ export async function getStaticPaths() {
 }
 
 export default function Post({ postData }) {
+
+    const { locale } = useRouter();
     return (
       <Layout>
         <Head>
