@@ -1,6 +1,7 @@
 .success {
-    color: green;
-  }
-  .error {
-    color: red;
-  }
+  @apply text-green-500;
+}
+
+.error {
+  @apply text-red-500;
+}
