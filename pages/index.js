@@ -4,8 +4,6 @@ import Link from 'next/link'
 import Layout, { siteTitle } from '../components/layout'
 import Date from '../components/date'
 import Alert from '../components/alert'
-
-import utilStyles from '../styles/utils.module.css'
 import { getSortedPostsData } from '../lib/posts'
 
 
@@ -24,7 +22,7 @@ export default function Home({ allPostsData }) {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <section className="text-xl font-normal text-black leading-normal">
         <p>Shunsuke Ito</p>
         <p>
           (This is a sample website - you’ll be building a site like this on{' '}
@@ -37,16 +35,16 @@ export default function Home({ allPostsData }) {
         </p>
         <Alert type="success">Alert Success</Alert>
       </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
+      <section className="m-4">
+        <h2 className="text-2xl font-medium text-black">Blog</h2>
+        <ul className="mt-4 list-none">
           {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
+            <li className="mt-4 " key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
               </Link>
               <br />
-              <small className={utilStyles.lightText}>
+              <small className="text-gray-500">
                 <Date dateString={date} />
               </small>
             </li>
